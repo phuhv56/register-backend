@@ -2,6 +2,7 @@ package com.mitrais.registerbackend.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "tbl_user")
@@ -19,7 +20,7 @@ public class User implements Serializable
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
     @Column(name = "phone_number", nullable = false, unique = true)
@@ -27,6 +28,9 @@ public class User implements Serializable
 
     @Column(name = "gender")
     private Integer gender;
+
+    @Column(name = "birthday")
+    private Date birthday;
 
     public long getId()
     {
@@ -91,6 +95,17 @@ public class User implements Serializable
     public User setGender(Integer gender)
     {
         this.gender = gender;
+        return this;
+    }
+
+    public Date getBirthday()
+    {
+        return birthday;
+    }
+
+    public User setBirthday(Date birthday)
+    {
+        this.birthday = birthday;
         return this;
     }
 

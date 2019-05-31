@@ -26,4 +26,6 @@ public class UserDTO
     private String phoneNumber;
 
     private Integer gender;
+
+    private String birthday;
 }

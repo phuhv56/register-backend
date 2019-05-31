@@ -1,11 +1,13 @@
 package com.mitrais.registerbackend.controllers;
 
 import com.mitrais.registerbackend.dtos.UserDTO;
+import com.mitrais.registerbackend.exceptions.CommonException;
 import com.mitrais.registerbackend.mappers.UserMapper;
 import com.mitrais.registerbackend.models.User;
 import com.mitrais.registerbackend.services.UserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,9 +26,9 @@ public class UserController extends BaseController
     public ResponseEntity<?> create(@RequestBody UserDTO object) {
         try {
             User user = UserMapper.INSTANCE.userDtoToUser(object);
-            return response(userService.create(user));
+            return success(userService.create(user));
         } catch (Exception ex) {
-            return response(error(ex));
+            return error(ex);
         }
     }
 
