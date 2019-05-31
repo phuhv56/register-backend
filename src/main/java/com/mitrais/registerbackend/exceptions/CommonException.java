@@ -2,6 +2,10 @@ package com.mitrais.registerbackend.exceptions;
 
 public class CommonException extends Exception
 {
+    public CommonException() {
+
+    }
+
     public CommonException(Exception ex)
     {
         super(ex);
@@ -33,9 +37,10 @@ public class CommonException extends Exception
         return code;
     }
 
-    public void setCode(Integer code)
+    public CommonException setCode(Integer code)
     {
         this.code = code;
+        return this;
     }
 
 
@@ -44,8 +49,9 @@ public class CommonException extends Exception
         return data;
     }
 
-    public void setData(Object data)
+    public CommonException setData(Object data)
     {
         this.data = data;
+        return this;
     }
 }

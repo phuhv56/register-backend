@@ -18,15 +18,14 @@ public class UserServiceImp implements UserService
         User checkExistPhoneNumber = userRepository.findByPhoneNumber(user.getPhoneNumber());
 
         if (checkExistPhoneNumber!= null) {
-            throw new CommonException("Phone number " + user.getPhoneNumber() + " already exists!");
+            throw new CommonException().setData("Phone number " + user.getPhoneNumber() + " already exists!");
         }
 
         User checkExistEmail = userRepository.findByEmail(user.getEmail());
 
         if (checkExistEmail!= null) {
-            throw new CommonException("Email " + user.getEmail() + " already exists!");
+            throw new CommonException().setData("Email " + user.getEmail() + " already exists!");
         }
-
         User userResult = userRepository.save(user);
         return userResult;
     }
